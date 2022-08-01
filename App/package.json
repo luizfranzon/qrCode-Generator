@@ -12,7 +12,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-qr-code": "^2.0.7",
-    "sass": "^1.54.0"
+    "sass": "^1.54.0",
+    "save-svg-as-png": "^1.4.17"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",

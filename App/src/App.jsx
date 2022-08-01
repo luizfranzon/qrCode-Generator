@@ -1,8 +1,9 @@
-import styles from "./App.module.scss"
+import { useState } from "react";
 
 import QRCode from "react-qr-code";
-import { useState } from "react";
-import ReactDOM from "react-dom";
+import { saveSvgAsPng } from "save-svg-as-png"
+
+import styles from "./App.module.scss"
 
 export function App() {
 
@@ -12,6 +13,10 @@ export function App() {
         setInputValue(event.target.value)
     }
 
+    function handleDownloadGeneratedQRcode() {
+        saveSvgAsPng(document.getElementById("qrcodesvg"), "qrcode.png", {scale: 4});
+    }
+
     return (
         <div>
             <header className={styles.header}>
@@ -19,9 +24,9 @@ export function App() {
             </header>
             <main className={styles.main}>
                 <input onChange={handleInputValueChange} type="text" placeholder="Enter your message"/>
-                <QRCode value={inputValue} />
+                <QRCode className={styles.qrcode} id="qrcodesvg" value={inputValue} title={inputValue} size="256"/>
+                <button onClick={handleDownloadGeneratedQRcode}>Download</button>
             </main>
-
         </div>
     )
 }
